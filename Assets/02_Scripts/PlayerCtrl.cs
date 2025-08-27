@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerCtrl : MonoBehaviour
 {
     // component cash
-    Transform tr;
+    // [SerializeField] - private로 쓰고 싶은데 unity에서는 보고 싶을떄 사용
+    [SerializeField] Transform tr; 
+    [SerializeField] public float moveSpeed = 20.0f;
 
     void Start()
     {
@@ -14,6 +16,7 @@ public class PlayerCtrl : MonoBehaviour
         //tr = GetComponent("Transform") as Transform;   
         //tr = (Transform)GetComponent(typeof(Transform)); 
         tr = GetComponent<Transform>();
+        moveSpeed = 3.0f;
     }
 
     void Update()
@@ -25,6 +28,7 @@ public class PlayerCtrl : MonoBehaviour
         // Transform.Position
         //transform.position += new Vector3(0, 0, 1);
         // normalized
-        tr.position += Vector3.forward * 1;
+        // tr.position += Vector3.forward * 1;
+        tr.Translate(Vector3.forward * Time.deltaTime * v * moveSpeed, Space.Self); // forward는 Vector3의 Z값과 같다, 어차피 앞으로 가는
     }
 }
