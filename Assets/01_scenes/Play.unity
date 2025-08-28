@@ -651,7 +651,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89afd46f2feb6c04bb8eec262f42616b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tr: {fileID: 0}
   moveSpeed: 20
+  turnSpeed: 500
 --- !u!1001 &1979562583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -707,6 +709,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 206b3ed2463608b46b79f7a550d90d20, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
 --- !u!1001 &4863664810893279298
