@@ -6,7 +6,11 @@ public class PlayerCtrl : MonoBehaviour
 {
     // component cash
     // [SerializeField] - private로 쓰고 싶은데 unity에서는 보고 싶을떄 사용
-    [SerializeField] Transform tr; 
+
+    const float TIME_INTER = 0.25f;
+    const float INPUT_VALUE = 0.1f;
+    [SerializeField] Transform tr;
+    Animation anim;
     [SerializeField] public float moveSpeed = 20.0f;
     [SerializeField] public float turnSpeed = 100.0f;
 
@@ -17,7 +21,9 @@ public class PlayerCtrl : MonoBehaviour
         //tr = GetComponent("Transform") as Transform;   
         //tr = (Transform)GetComponent(typeof(Transform)); 
         tr = GetComponent<Transform>();
-        moveSpeed = 3.0f;
+        anim = GetComponent<Animation>();
+
+        anim.Play("Idle");
     }
 
     void Update()
@@ -34,9 +40,35 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
         tr.Translate(moveDir * moveSpeed * Time.deltaTime);
         tr.Rotate(Vector3.up * turnSpeed * Time.deltaTime * r);
+        PlayerAnim(h, v);
 
 
         //tr.Translate(Vector3.forward * Time.deltaTime * v * moveSpeed, Space.Self); // forward는 Vector3의 Z값과 같다, 어차피 앞으로 가는
 
+    }
+
+
+    void PlayerAnim(float h, float v)
+    {
+        if (v >= INPUT_VALUE)
+        {
+            anim.CrossFade("RunF", TIME_INTER);
+        }
+        else if (v <= -INPUT_VALUE)
+        {
+            anim.CrossFade("RunB", TIME_INTER);
+        }
+        else if (h >= INPUT_VALUE)
+        {
+            anim.CrossFade("RunR", TIME_INTER);
+        }
+        else if (h <= -INPUT_VALUE)
+        {
+            anim.CrossFade("RunL", TIME_INTER);
+        }
+        else
+        {
+            anim.CrossFade("Idle", TIME_INTER);
+        }
     }
 }
