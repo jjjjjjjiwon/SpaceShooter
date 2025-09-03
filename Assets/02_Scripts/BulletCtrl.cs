@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Rider.Unity.Editor;
+using UnityEditor;
+using UnityEngine;
+
+public class BulletCtrl : MonoBehaviour
+{
+    public float damage = 20.0f;
+    public float force = 1500.0f;
+    Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * force);
+    }
+}
