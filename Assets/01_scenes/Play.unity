@@ -1093,7 +1093,7 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 13700000, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
   m_PrefabInstance: {fileID: 1979562583}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &729486050752088881
+--- !u!1001 &1391682348237919519
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
